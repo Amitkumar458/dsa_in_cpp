@@ -138,7 +138,8 @@ int main()
     // string num;
     // cout << "Enter the number = ";
     // cin >> num;
-   
+    cout<<tiling(5,2,2,1)<<endl;
+    // cout<<matrix(3,2)<<endl;
     return 0;
 }
   

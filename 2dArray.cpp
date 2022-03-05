@@ -6,6 +6,7 @@ void print2darray()
     int x = 3;
     int y = 3;
     int arr[x][y];
+    cout<<"Enter : ";
     for (int i = 0; i < x; i++)
     {
         for (int j = 0; j < y; j++)
@@ -66,26 +67,83 @@ void print2darray()
             maxxcolumn = o;
         }
     }
-    cout<<endl<<"The maxx of add column sum is : "<<addmaxxcol<<" which is in "<<maxxcolumn<<" column "<<endl;
+    cout<<endl<< "The maxx of add column sum is : "<<addmaxxcol<<" which is in "<<maxxcolumn<<" column "<<endl;
 
     // 2d array print like a wave;
-    for (int a = 0; a < y; a = a + 2)
+    cout<<"Wave print : ";
+    for (int a = 0; a < y; a++)
     {
-        for (int c = 0; c < x; c++)
+        if (a % 2 == 0)
         {
-            cout<<arr[c][a]<<" ";
+            for (int c = 0; c < x; c++)
+            {
+                cout << arr[c][a] << " ";
+            }
+        }
+        else
+        {
+            for (int d = x - 1; d > -1; d--)
+            {
+                cout << arr[d][a] << " ";
+            }
         }
     }
-    for (int b = 1; b < y; b = b + 2)
+    cout<<endl;
+
+    // print a 2d array in spiral order print
+    int total = x*y;
+    int count = 0;
+    int startingrow = 0;
+    int startingcol = 0;
+    int endingrow = x;
+    int endingcol = y;
+    cout<<"Spiral print : ";
+    while (count < total)
     {
-        for (int d = x - 1; d > -1; d--)
+        for (int f = startingcol; f < endingcol && count<total; f++)
         {
-            cout<<arr[d][b]<<" ";
+            cout<<arr[startingrow][f]<<" ";
+            count++;
         }
+        startingrow++;
+
+        for (int g = startingrow; g < endingrow && count<total; g++)
+        {
+            cout<<arr[g][endingcol-1]<<" ";
+            count++;
+        }
+        endingcol--;
+
+        for (int h = endingcol-1; h >= startingcol && count<total; h--)
+        {
+            cout<<arr[endingrow-1][h]<<" ";
+            count++;
+        }
+        endingrow--;
+
+        for (int aa = endingrow-1; aa >= startingrow && count<total; aa--)
+        {
+            cout<<arr[aa][startingcol]<<" ";
+            count++;
+        }
+        startingcol++;
     }
+    
+    // Transpose of an N x N matrix 
+    int row = x;
+    int col = y;
+    cout<<endl<<"Transpose : "<<endl;
+    for (int i = 0; i < col; i++)
+    {
+        for (int j = 0; j < row; j++)
+        {
+          cout<<arr[j][i]<<" ";
+        }
+        cout<<endl;
+    } 
 }
 
-int main ()
+int main()
 {
     print2darray();
     return 0;

@@ -25,19 +25,20 @@ int palidrome(string a)
 void pireplace(string s){
     if (s.length() == 0)
     {
-        return;
+        return ;
     }
+    
     if (s[0] == 'p' && s[1] == 'i')
     {
-       cout<<"3.14";
-       string ros = s.substr(2);
-       pireplace(ros);
+        cout<<"3.14";
+        pireplace(s.substr(2));
     }
-    else {
+    else
+    {
         cout<<s[0];
-       string ros = s.substr(1);
-       pireplace(ros);
+        pireplace(s.substr(1));
     }
+    
 }
 
 // replace Duplicate from given string  --> good =-> god
@@ -118,7 +119,7 @@ void permutation(string s , string ans){
         char ch = s[i];
         permutation(ros , ans+ch);
     }
-    
+
 }
 
 
@@ -127,6 +128,7 @@ int main()
     // string num;
     // cout << "Enter the number = ";
     // cin >> num;
-   
+    // pireplace("apimipitpi");
+    // permutation("abc" , "");
     return 0;
 }

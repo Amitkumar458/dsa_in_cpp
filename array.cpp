@@ -14,7 +14,7 @@ void maxnum()
     cout << maxNo << endl;
 }
 
-// Searching in arrays
+// Searching in arrays --> Brute force technique
 void search()
 {
     int arr[] = {12, 13, 16, 34, 23, 16, 65, 23};
@@ -30,6 +30,7 @@ void search()
 }
 
 // Searching an array using binary search;
+// Binary search is use for sorted array
 int binary()
 {
     int arr[] = {12, 14, 15, 18, 28, 29, 34, 39, 45};
@@ -40,7 +41,7 @@ int binary()
     while (s <= n)
     {
         int mid = (s + n) / 2;
-        if (arr[mid] > key)
+        if (arr[mid] == key)
         {
             return mid;
         }
@@ -56,73 +57,40 @@ int binary()
     return -1;
 }
 
-// Sorting a array using c++;
-void arraysort()
-{
-    int arr[] = {12, 23, 15, 18, 90, 29, 34, 3, 13};
-    int len = sizeof(arr) / sizeof(arr[0]);
-    for (int i = 0; i < len; i++)
+// find a element in Infinite sorted Array
+int find_ele_In_infinite_array() {
+    int arr[40] = {1,3,5,6,7,8,9,12,13,15,16,18,19,20,23,26,27,28,29,30,34,36,37,38,40,41,43,45,47,48,50};
+    int key = 37;
+    int ending = 5;
+    int starting = 0;
+    while (arr[ending] < key)
     {
-        for (int j = 0; j < len; j++)
+        starting = ending;
+        ending = 2*ending;
+    }
+    int s = starting;
+    int n = ending;
+    while (s <= n)
+    {
+        int mid = (s + n) / 2;
+        if (arr[mid] == key)
         {
-            if (arr[i] < arr[j])
-            {
-                int temp = arr[j];
-                arr[j] = arr[i];
-                arr[i] = temp;
-            }
+            return mid;
         }
+        else if (arr[mid] > key)
+        {
+            n = mid - 1;
+        }
+        else
+        {
+            s = mid + 1;
+        }
+
     }
-    for (int k = 0; k < len; k++)
-    {
-        cout << arr[k] << " ";
-    }
+    return -1;
 }
 
-// Sorting An Array Using Bubble Sort...
-int bubblesort(int arr[], int len, int n)
-{
-    if (len == 0)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            cout << arr[j] << " ";
-        }
-        return 0;
-    }
-
-    for (int i = 0; i < len - 1; i++)
-    {
-        if (arr[i] > arr[i + 1])
-        {
-            int temp = arr[i + 1];
-            arr[i + 1] = arr[i];
-            arr[i] = temp;
-        }
-    }
-    bubblesort(arr, len - 1, n);
-    return 0;
-}
-
-// Sorting an using Insertion Sort...
-void insertionsort(int arr[], int len)
-{
-    for (int i = 0; i < len; i++)
-    {
-        int current = arr[i];
-        int j = i - 1;
-        while (arr[j] > current && j >= 0)
-        {
-            arr[j + 1] = arr[j];
-            j--;
-        }
-        arr[j + 1] = current;
-    }
-    for (int k = 0; k < len; k++)
-    {
-        cout << arr[k] << " ";
-    }
-}
+// searching an element in sorted and rotated array in c++;
 
 // Max till i => [1 , 0 , 5 , 4 , 6 , 8] = [1 , 1 , 5 , 5 , 6 , 8]
 void maxtilli(int arr[], int len)
@@ -162,11 +130,9 @@ void addsubarray(int arr[] , int len) {
 
 int main()
 {
-    // int arr[] = {1 , 2 , 2};
-    // int len = sizeof(arr) / sizeof(arr[0]);
-    // bubblesort(arr , len , len);
-    // insertionsort(arr , len);
     // maxtilli(arr, len);
-    print2darray();
+    // print2darray();
+    // cout<<binary()<<endl;
+    // cout<<find_ele_In_infinite_array()<<endl;
     return 0;
 }
