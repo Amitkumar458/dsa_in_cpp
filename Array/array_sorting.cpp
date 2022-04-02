@@ -171,11 +171,78 @@ void mregesort() {
     }
 }
 
+// Count sort for sorting an array.
+void CountSort() {
+    int arr[] = {2,3,4,5,3,4,8,1,2,3};
+    int len = sizeof(arr)/sizeof(arr[0]);
+    int max = INT_MIN;
+    for (int i = 0; i < len; i++)
+    {
+        if (arr[i]>max)
+        {
+            max = arr[i];
+        }
+    }
+    int arr2[max+1] = {0};
+    for (int i = 0; i < len; i++)
+    {
+        arr2[arr[i]] = arr2[arr[i]] + 1;
+    }
+    int count = 0;
+    for (int i = 0; i < max+1; i++)
+    {
+        while (arr2[i]>0)
+        {
+            arr[count] = i;
+            count++;
+            arr2[i] = arr2[i]-1;
+        }
+    }
+    for (int k = 0; k < len; k++)
+    {
+        cout<<arr[k]<<" ";
+    }cout<<endl;
+    
+}
+
+// Sorting an array in wave format;
+void Swap(int* arr , int i , int j) {
+    int swap = arr[i];
+    arr[i] = arr[j];
+    arr[j] = swap;
+}
+void wavesort() {
+    int arr[] = {1,3,4,7,5,6,2};
+    int len = sizeof(arr)/sizeof(arr[0]);
+    int i = 1;
+    while (i<len)
+    {
+        if (arr[i] > arr[i-1])
+        {
+            Swap(arr , i , i-1);
+        }
+        if (arr[i] > arr[i+1])
+        {
+            Swap(arr , i , i+1);
+        }
+        i = i+2;
+
+    }
+
+    for (int i = 0; i < len; i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+    
+}
+
 int main() {
     // int arr[] = {1 , 2 , 2};
     // int len = sizeof(arr) / sizeof(arr[0]);
     // bubblesort(arr , len , len);
     // insertionsort(arr , len);
     // mregesort();
+    // CountSort();
+    wavesort();
     return 0;
 }

@@ -35,6 +35,11 @@ int main () {
         cout<<element<<" ";
     }cout<<endl; // 1 2 3
     
-
+    // write in reduce form of an given array;
+    void reduceform() {
+        int arr[] = {10,16,7,14,5,3,2,9};
+        vector < pair<int,int> > v;
+        
+    }
     return 0;
 }
